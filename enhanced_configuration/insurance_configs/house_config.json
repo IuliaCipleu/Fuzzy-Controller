@@ -1,0 +1,140 @@
+{
+  "type": "house",
+  "inputs": {
+    "house_age": {
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "mfs": {
+        "New": {
+          "kind": "trapmf",
+          "params": [
+            0,
+            0,
+            5,
+            15
+          ]
+        },
+        "Mid": {
+          "kind": "trimf",
+          "params": [
+            10,
+            30,
+            60
+          ]
+        },
+        "Old": {
+          "kind": "trapmf",
+          "params": [
+            50,
+            80,
+            100,
+            100
+          ]
+        }
+      }
+    },
+    "location_risk": {
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "mfs": {
+        "Low": {
+          "kind": "trapmf",
+          "params": [
+            0,
+            0,
+            2,
+            4
+          ]
+        },
+        "Medium": {
+          "kind": "trimf",
+          "params": [
+            3,
+            5,
+            7
+          ]
+        },
+        "High": {
+          "kind": "trapmf",
+          "params": [
+            6,
+            8,
+            10,
+            10
+          ]
+        }
+      }
+    }
+  },
+  "outputs": {
+    "premium": {
+      "min": 0,
+      "max": 5000,
+      "step": 1,
+      "mfs": {
+        "Low": {
+          "kind": "trapmf",
+          "params": [
+            0,
+            0,
+            1000,
+            2000
+          ]
+        },
+        "Medium": {
+          "kind": "trimf",
+          "params": [
+            1500,
+            3000,
+            4000
+          ]
+        },
+        "High": {
+          "kind": "trapmf",
+          "params": [
+            3500,
+            4500,
+            5000,
+            5000
+          ]
+        }
+      }
+    }
+  },
+  "rules": [
+    {
+      "if": [
+        [
+          "house_age",
+          "New"
+        ],
+        [
+          "location_risk",
+          "Low"
+        ]
+      ],
+      "then": [
+        "premium",
+        "Low"
+      ]
+    },
+    {
+      "if": [
+        [
+          "house_age",
+          "Old"
+        ],
+        [
+          "location_risk",
+          "High"
+        ]
+      ],
+      "then": [
+        "premium",
+        "High"
+      ]
+    }
+  ]
+}

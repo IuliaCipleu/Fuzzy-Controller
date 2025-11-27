@@ -1,0 +1,169 @@
+{
+  "damage": {
+    "Low": {
+      "kind": "gaussmf",
+      "params": [
+        14320.657304715474,
+        15861.263039796908
+      ]
+    },
+    "Medium": {
+      "kind": "trimf",
+      "params": [
+        39467.845681781575,
+        39671.45110121041,
+        40000
+      ]
+    },
+    "High": {
+      "kind": "sigmf",
+      "params": [
+        48693.29654277367,
+        0.00039088464039778323
+      ]
+    }
+  },
+  "hospitalization_days": {
+    "None": {
+      "kind": "trapmf",
+      "params": [
+        0,
+        0,
+        1,
+        2
+      ]
+    },
+    "Short": {
+      "kind": "gaussmf",
+      "params": [
+        7,
+        5
+      ]
+    },
+    "Long": {
+      "kind": "sigmf",
+      "params": [
+        20,
+        0.2
+      ]
+    }
+  },
+  "victims": {
+    "None": {
+      "kind": "trapmf",
+      "params": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    "Few": {
+      "kind": "gaussmf",
+      "params": [
+        2,
+        1
+      ]
+    },
+    "Many": {
+      "kind": "sigmf",
+      "params": [
+        3,
+        1
+      ]
+    }
+  },
+  "coverage": {
+    "Low": {
+      "kind": "sigmf",
+      "params": [
+        50,
+        -0.1
+      ]
+    },
+    "High": {
+      "kind": "sigmf",
+      "params": [
+        50,
+        0.1
+      ]
+    }
+  },
+  "fraud": {
+    "Low": {
+      "kind": "gaussmf",
+      "params": [
+        20,
+        20
+      ]
+    },
+    "High": {
+      "kind": "gaussmf",
+      "params": [
+        80,
+        20
+      ]
+    }
+  },
+  "priority": {
+    "Low": {
+      "kind": "gaussmf",
+      "params": [
+        20,
+        15
+      ]
+    },
+    "Medium": {
+      "kind": "trimf",
+      "params": [
+        30,
+        50,
+        70
+      ]
+    },
+    "High": {
+      "kind": "sigmf",
+      "params": [
+        70,
+        0.1
+      ]
+    },
+    "Critical": {
+      "kind": "sigmf",
+      "params": [
+        95,
+        0.2
+      ]
+    }
+  },
+  "handler": {
+    "Auto": {
+      "kind": "gaussmf",
+      "params": [
+        0,
+        0.5
+      ]
+    },
+    "Junior": {
+      "kind": "gaussmf",
+      "params": [
+        1,
+        0.5
+      ]
+    },
+    "Senior": {
+      "kind": "gaussmf",
+      "params": [
+        2,
+        0.5
+      ]
+    },
+    "Specialist": {
+      "kind": "gaussmf",
+      "params": [
+        3,
+        0.5
+      ]
+    }
+  }
+}

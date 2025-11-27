@@ -1,0 +1,8 @@
+scikit-fuzzy
+matplotlib
+numpy
+scipy
+networkx
+scikit-learn
+optuna
+pandas

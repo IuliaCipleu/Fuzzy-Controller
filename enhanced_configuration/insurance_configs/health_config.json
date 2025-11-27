@@ -1,0 +1,140 @@
+{
+  "type": "health",
+  "inputs": {
+    "age": {
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "mfs": {
+        "Child": {
+          "kind": "trapmf",
+          "params": [
+            0,
+            0,
+            12,
+            18
+          ]
+        },
+        "Adult": {
+          "kind": "trimf",
+          "params": [
+            18,
+            40,
+            65
+          ]
+        },
+        "Senior": {
+          "kind": "trapmf",
+          "params": [
+            60,
+            75,
+            100,
+            100
+          ]
+        }
+      }
+    },
+    "pre_existing_conditions": {
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "mfs": {
+        "None": {
+          "kind": "trapmf",
+          "params": [
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        "Few": {
+          "kind": "trimf",
+          "params": [
+            0,
+            2,
+            4
+          ]
+        },
+        "Many": {
+          "kind": "trapmf",
+          "params": [
+            3,
+            4,
+            5,
+            5
+          ]
+        }
+      }
+    }
+  },
+  "outputs": {
+    "premium": {
+      "min": 0,
+      "max": 3000,
+      "step": 1,
+      "mfs": {
+        "Low": {
+          "kind": "trapmf",
+          "params": [
+            0,
+            0,
+            500,
+            1000
+          ]
+        },
+        "Medium": {
+          "kind": "trimf",
+          "params": [
+            800,
+            1500,
+            2200
+          ]
+        },
+        "High": {
+          "kind": "trapmf",
+          "params": [
+            2000,
+            2500,
+            3000,
+            3000
+          ]
+        }
+      }
+    }
+  },
+  "rules": [
+    {
+      "if": [
+        [
+          "age",
+          "Child"
+        ],
+        [
+          "pre_existing_conditions",
+          "None"
+        ]
+      ],
+      "then": [
+        "premium",
+        "Low"
+      ]
+    },
+    {
+      "if": [
+        [
+          "age",
+          "Senior"
+        ],
+        [
+          "pre_existing_conditions",
+          "Many"
+        ]
+      ],
+      "then": [
+        "premium",
+        "High"
+      ]
+    }
+  ]
+}

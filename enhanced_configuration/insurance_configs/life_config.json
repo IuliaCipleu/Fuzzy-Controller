@@ -1,0 +1,132 @@
+{
+  "type": "life",
+  "inputs": {
+    "age": {
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "mfs": {
+        "Young": {
+          "kind": "trapmf",
+          "params": [
+            0,
+            0,
+            20,
+            30
+          ]
+        },
+        "Adult": {
+          "kind": "trimf",
+          "params": [
+            25,
+            45,
+            65
+          ]
+        },
+        "Senior": {
+          "kind": "trapmf",
+          "params": [
+            60,
+            80,
+            100,
+            100
+          ]
+        }
+      }
+    },
+    "smoker": {
+      "min": 0,
+      "max": 1,
+      "step": 1,
+      "mfs": {
+        "No": {
+          "kind": "trapmf",
+          "params": [
+            0,
+            0,
+            0,
+            0.5
+          ]
+        },
+        "Yes": {
+          "kind": "trapmf",
+          "params": [
+            0.5,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    }
+  },
+  "outputs": {
+    "premium": {
+      "min": 0,
+      "max": 4000,
+      "step": 1,
+      "mfs": {
+        "Low": {
+          "kind": "trapmf",
+          "params": [
+            0,
+            0,
+            800,
+            1600
+          ]
+        },
+        "Medium": {
+          "kind": "trimf",
+          "params": [
+            1200,
+            2000,
+            3000
+          ]
+        },
+        "High": {
+          "kind": "trapmf",
+          "params": [
+            2500,
+            3500,
+            4000,
+            4000
+          ]
+        }
+      }
+    }
+  },
+  "rules": [
+    {
+      "if": [
+        [
+          "age",
+          "Young"
+        ],
+        [
+          "smoker",
+          "No"
+        ]
+      ],
+      "then": [
+        "premium",
+        "Low"
+      ]
+    },
+    {
+      "if": [
+        [
+          "age",
+          "Senior"
+        ],
+        [
+          "smoker",
+          "Yes"
+        ]
+      ],
+      "then": [
+        "premium",
+        "High"
+      ]
+    }
+  ]
+}
